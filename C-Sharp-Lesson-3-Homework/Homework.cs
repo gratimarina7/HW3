@@ -25,6 +25,20 @@ namespace C_Sharp_Lesson_3_Homework
              */
             //your code here
 
+            int midlength0m1 = matrixOfIntegers.GetLength(0) / 2;
+            int midlength1m1 = matrixOfIntegers.GetLength(1) / 2;
+            int n = matrixOfIntegers.GetLength(0);
+            int m = matrixOfIntegers.GetLength(1);
+
+            if (matrixOfIntegers.GetLength(0) % 2 != 0 && matrixOfIntegers.GetLength(1) % 2 != 0 && n == m)
+            {
+                Console.WriteLine("The central element is " + matrixOfIntegers[midlength0m1, midlength1m1]);
+            }
+            else
+            {
+                Console.WriteLine("This matrix doesn't have a central element");
+            }
+
 
         }
         public void GetSummOfDiagonalsElements(int[,] matrixOfIntegers)
@@ -48,6 +62,41 @@ namespace C_Sharp_Lesson_3_Homework
              */
             //your code here
 
+            int diagonallength0m1 = matrixOfIntegers.GetLength(0);
+            int diagonallength1m1 = matrixOfIntegers.GetLength(1);
+            int n = matrixOfIntegers.GetLength(0);
+            int m = matrixOfIntegers.GetLength(1);
+
+            if (matrixOfIntegers.GetLength(0) % 2 != 0 && matrixOfIntegers.GetLength(1) % 2 != 0 && n == m)
+            {
+
+                int principal = 0, secondary = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+
+                        // Condition for first diagonal
+                        if (i == j)
+                            principal += matrixOfIntegers[i, j];
+
+                        // Condition for second diagonal
+                        if ((i + j) == (n - 1))
+                            secondary += matrixOfIntegers[i, j];
+                    }
+                }
+
+                Console.WriteLine("First Diagonal:"
+                                          + principal);
+
+                Console.WriteLine("Second Diagonal:"
+                                          + secondary);
+            }
+            else
+            {
+                Console.WriteLine("This matrix doesn't have diagonals");
+            }
+
         }
         public void StarPrinter(int triangleHight)
         {
@@ -58,11 +107,33 @@ namespace C_Sharp_Lesson_3_Homework
              *          * * * 
              */
             //your code here
+
+            int i, j, k;
+
+            for (i = 1; i <= triangleHight; i++)
+            {
+                for (j = 1; j < triangleHight - i + 1; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (k = 1; k <= i; k++)
+                {
+                    Console.Write("*");
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+
+            }
         }
         public void SortList(IList<int> listOfNumbers)
         {
             //Print to console elements of  listOfNumbers in ascending order
             //your code here
+            var sortedList = listOfNumbers.OrderBy(x => x);
+            foreach (int element in sortedList)
+            {
+                Console.WriteLine(element);
+            }
         }
         public static void Main(String[] args)
         {
